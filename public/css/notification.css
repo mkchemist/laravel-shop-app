@@ -1,0 +1,45 @@
+.alert-bar {
+	position:fixed;
+	top:0;
+	right:0;
+	margin-right:1%;
+	margin-top:1%;
+	max-width:90%;
+	min-width: 70%;
+	border-radius:5px;
+	padding:10px;
+	z-index:100000;
+	transition:1s;
+	animation-name: slide_left;
+	animation-duration:1s;
+	opacity:.95;
+}
+
+.alert-bar-close {
+	font-size:1.4rem;
+	cursor: pointer;
+	transition:.3s;
+}
+
+.alert-bar-close:hover {
+	color: firebrick;
+	font-weight: bold;
+}
+
+
+
+@media(min-width:992px) {
+	.alert-bar {
+		max-width: 30%;
+		min-width: 25%;
+	}
+}
+
+@keyframes slide_left {
+	from {
+		margin-right:-100%;
+	}
+	to {
+		margin-right: initial;
+	}
+}
