@@ -15,20 +15,16 @@
 		</div>
 	</div>
 	<div class="col-lg-8 p-2">
-		<p class="h2 clearfix">
-			<span>Product Name</span>
-			<span class="float-right text-primary font-weight-bold">1000 $</span>
-			<br>
-			<del class="float-right text-muted">1200 $</del>
-
+		<p class="h2 clearfix mb-0">
+            <span>{{ $product->name }}</span>
+			<span class="float-right text-primary font-weight-bold">{{ $product->price }} $</span>
+        </p>
+        <p class="h2 clearfix mb-0">
+            <span class="small text-muted">{{ $product->brand }}</span>
+			<del class="float-right text-muted">{{ $product->price + ($product->price * $product->sale) }}$</del>
 		</p>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			{!! $product->desc !!}
 		</p>
 		<hr>
 		<div classs="clearfix">

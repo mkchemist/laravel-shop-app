@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->integer('price');
             $table->integer('sale')->default(0);
-            $table->text('tage')->nullable();
+            $table->text('tags')->nullable();
             $table->longText('desc')->nullable();
             $table->string('brand');
             $table->text('thumb_link')->nullable();

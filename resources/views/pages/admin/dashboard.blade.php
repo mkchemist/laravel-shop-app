@@ -608,5 +608,12 @@
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
- 
+
+@endsection
+@section('script')
+    <!-- JQVMap -->
+<script src="{{asset('adminlte/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+<script src="{{asset('adminlte/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{asset('adminlte/dist/js/pages/dashboard.js')}}"></script>
 @endsection

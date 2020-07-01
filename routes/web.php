@@ -30,7 +30,8 @@ Route::get('/logout', function () {
 	]);
 });
 
-Route::get('/product/{id}', function () {
-	return view("pages.user.product.view");
+Route::get('/product/{id}', function ($id) {
+    $product = \App\Product::find($id);
+	return view("pages.user.product.view")->with(["product" => $product]);
 });
 

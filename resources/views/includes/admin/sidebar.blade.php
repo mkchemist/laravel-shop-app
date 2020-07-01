@@ -154,15 +154,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('/admin/category/create') }}" class="nav-link">
-                  <i class="fa fa-plus nav-icon"></i>
-                  <p>Add new category</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="{{ url('/admin/category') }}" class="nav-link">
                   <i class="far fa-eye nav-icon"></i>
                   <p>View All</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('/admin/category/create') }}" class="nav-link">
+                  <i class="fa fa-plus nav-icon"></i>
+                  <p>Add new category</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -183,15 +183,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>General</p>
+                <a href="{{ url('admin/products/') }}" class="nav-link">
+                  <i class="far fa-eye nav-icon"></i>
+                  <p>View All</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Icons</p>
+                <a href="{{ url('admin/products') }}/create" class="nav-link">
+                  <i class="fa fa-plus nav-icon"></i>
+                  <p>Add new Product</p>
                 </a>
               </li>
               <li class="nav-item">
