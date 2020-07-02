@@ -12,5 +12,5 @@ Route::prefix("/admin")->group(function() {
 
     Route::resource("/category" , "CategoryController");
 
-    Route::resource("/products/", "ProductController");
+    Route::resource("/products", "ProductController");
 });

@@ -16,8 +16,9 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $cats = Category::with("products")->get();
         $products = Product::all();
-        return view("pages.admin.products.index")->with(["products" => $products]);
+        return view("pages.admin.products.index")->with(["products" => $products, "cats" => $cats]);
     }
 
     /**
@@ -43,9 +44,13 @@ class ProductController extends Controller
             "name"  =>  'required',
             "price" =>  'required|numeric',
             'brand' =>  'required',
-            'category_id'   =>  'required|numeric'
+            'category_id'   =>  'required|numeric',
+            "thumb_link"    =>  "mimetypes:image/jpg,image/jpeg,image/png"
         ]);
-        $thumb_link = $this->uploadFile($request->thumb_link);
+        $thumb_link = "";
+        if($request->thumb_link) {
+            $thumb_link = $this->uploadFile($request->thumb_link);
+        }
         $product = Product::create([
             "name"          => $request->name,
             "price"         =>  $request->price,
@@ -67,7 +72,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::find($id);
+        return view("pages.admin.products.view")->with(["product"=>$product]);
     }
 
     /**
@@ -78,7 +84,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        $cats = Category::all();
+        return view("pages.admin.products.edit")->with(["product" => $product, "cats" => $cats]);
     }
 
     /**
@@ -90,7 +98,34 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            "name"  =>  'required',
+            "price" =>  'required|numeric',
+            'brand' =>  'required',
+            'category_id'   =>  'required|numeric',
+            "thumb_link"    =>  "mimetypes:image/jpg,image/jpeg,image/png"
+        ]);
+        $product = Product::find($id);
+
+        $thumb_link = $product->thumb_link;
+
+        if($request->thumb_link) {
+            if($product->thumb_link && file_exists("images$product->thumb_link")) {
+                unlink("images".$product->thumb_link);
+            }
+            $thumb_link = $this->uploadFile($request->thumb_link);
+        }
+        $product->update([
+            "name"          => $request->name,
+            "price"         =>  $request->price,
+            "brand"         =>  $request->brand,
+            "category_id"   => $request->category_id,
+            "sale"          =>  $request->sale,
+            "tags"          =>  $request->tags,
+            "desc"          =>  $request->desc,
+            "thumb_link"    =>  $thumb_link
+            ]);
+        return redirect("/admin/products");
     }
 
     /**

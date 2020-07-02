@@ -1,7 +1,7 @@
-<div class="card px-0 col-lg-3 col-md-5 mx-1 my-1 product-card">
+<div class="card px-0 col-lg-3 col-md-5 my-1 product-card">
     <a class="product-img-container text-center" href="">
         @if(isset($product))
-            @if (file_exists("images/$product->thumb_link"))
+            @if ($product->thumb_link && file_exists("images/$product->thumb_link"))
                 <img class="img-fluid p-2" src="{{asset("/images$product->thumb_link")}}" alt="" style="max-height:200px"/>
             @else
                 <img class="img-fluid p-2" src="{{asset("/images/image-empty.png")}}" alt="" style="max-height:200px"/>

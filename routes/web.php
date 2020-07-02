@@ -32,6 +32,12 @@ Route::get('/logout', function () {
 
 Route::get('/product/{id}', function ($id) {
     $product = \App\Product::find($id);
-	return view("pages.user.product.view")->with(["product" => $product]);
+    $similers = App\Product::where("id" ,"!=", $product->id)
+                            ->where("category_id" , $product->category_id)
+                            ->get();
+	return view("pages.user.product.view")->with([
+        "similers" => $similers,
+        "product" => $product,
+        ]);
 });
 

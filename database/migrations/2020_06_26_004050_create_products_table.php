@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->string('brand');
             $table->text('thumb_link')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::table('products', function(Blueprint $table) {
