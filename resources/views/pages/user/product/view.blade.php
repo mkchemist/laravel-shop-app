@@ -44,15 +44,17 @@
 	</div>
 	<div class="mb-3 col-12">
 		<hr>
-		<p class="h3 mb-0">Similar products</p>
+		<p class="lead mb-0">Similar products of {{ $product->category->name }}</p>
 		<div class="owl-carousel  py-3 row mx-auto" id="similer-carousel">
 			@foreach($similers as $item)
 				<div class="card mx-1 mb-3 text-center">
-                    @if (file_exists("images/$item->thumb_link"))
-                    <img class="img-fluid p-2 card-top-img mx-auto" src="{{asset("/images.$item->thumb_link")}}"  alt=""   style="display:block;max-width:60%;height:auto"/>
-                    @else
-                    <img class="img-fluid p-2 card-top-img" src="{{asset('/')}}images/image-empty.png" alt="" style="width:100%;height:auto;object-fit:cover"/>
-                    @endif
+                    <a href="{{ url("product/$item->id") }}">
+                        @if (file_exists("images/$item->thumb_link"))
+                        <img class="img-fluid p-2 card-top-img mx-auto" src="{{asset("/images.$item->thumb_link")}}"  alt=""   style="display:block;max-width:60%;height:auto"/>
+                        @else
+                        <img class="img-fluid p-2 card-top-img" src="{{asset('/')}}images/image-empty.png" alt="" style="width:100%;height:auto;object-fit:cover"/>
+                        @endif
+                    </a>
                     <div class="card-body">
                         <p class="mb-0">{{ $item->name }}</p>
                         <p class="mb-0 text-primary font-weight-bold">{{ $item->price }} $</p>

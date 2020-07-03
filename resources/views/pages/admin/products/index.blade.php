@@ -31,11 +31,13 @@
                     @foreach ($products as $product)
                     <tr>
                         <td class="text-center">
-                            @if ($product->thumb_link && file_exists("images$product->thumb_link"))
-                            <img src="{{ asset("images$product->thumb_link") }}" alt="" style="max-width:50px">
-                            @else
-                            <img src="{{ asset("images/image-empty.png") }}" alt="" style="max-width:50px">
-                            @endif
+                            <a href="{{ url("admin/products/$product->id") }}">
+                                @if ($product->thumb_link && file_exists("images$product->thumb_link"))
+                                <img src="{{ asset("images$product->thumb_link") }}" alt="" style="max-width:50px">
+                                @else
+                                <img src="{{ asset("images/image-empty.png") }}" alt="" style="max-width:50px">
+                                @endif
+                            </a>
                         </td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->category->name }}</td>
@@ -57,7 +59,7 @@
                             <a href="{{ url("/admin/products/$product->id/edit") }}" class="btn btn-sm btn-warning mx-lg-1 my-lg-0 my-1">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <form action="" method="POST">
+                            <form action="{{ url("admin/products/$product->id") }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-danger">

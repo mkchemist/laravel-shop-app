@@ -12,5 +12,7 @@ Route::prefix("/admin")->group(function() {
 
     Route::resource("/category" , "CategoryController");
 
+    Route::get('/products/trashed',"ProductController@viewTrashed");
+    Route::post('/products/restore/{id}',"ProductController@restore");
     Route::resource("/products", "ProductController");
 });

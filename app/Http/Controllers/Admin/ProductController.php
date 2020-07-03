@@ -72,7 +72,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
+        $product = Product::withTrashed()->where("id",$id)->first();
         return view("pages.admin.products.view")->with(["product"=>$product]);
     }
 
@@ -84,7 +84,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
+        $product = Product::withTrashed()->where("id",$id)->first();
         $cats = Category::all();
         return view("pages.admin.products.edit")->with(["product" => $product, "cats" => $cats]);
     }
@@ -105,7 +105,7 @@ class ProductController extends Controller
             'category_id'   =>  'required|numeric',
             "thumb_link"    =>  "mimetypes:image/jpg,image/jpeg,image/png"
         ]);
-        $product = Product::find($id);
+        $product = Product::withTrashed()->where("id",$id)->first();
 
         $thumb_link = $product->thumb_link;
 
@@ -136,7 +136,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+        return redirect()->back();
     }
 
     /**
@@ -151,5 +153,30 @@ class ProductController extends Controller
         $hash = $file->hashName("/products");
         $file->move("images/products", $hash);
         return $hash;
+    }
+
+    /**
+     * view all trashed product
+     *
+     * @param Illuminate\Http\Request
+     * @return Illuminate\Http\Response
+     */
+    public function viewTrashed()
+    {
+        $products = Product::onlyTrashed()->get();
+        return view("pages.admin.products.trashed")->with(["products" => $products]);
+    }
+
+    /**
+     * restore trashed product
+     *
+     * @param int $id
+     * @return Illuminate\Http\Response
+     */
+    public function restore($id)
+    {
+        $product = Product::withTrashed()->where("id",$id)->first();
+        $product->restore();
+        return redirect("admin/products");
     }
 }

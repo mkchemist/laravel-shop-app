@@ -195,9 +195,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/buttons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Buttons</p>
+                <a href="{{ url("admin/products/trashed") }}" class="nav-link">
+                  <i class="fa fa-trash nav-icon"></i>
+                  <p>Trashed</p>
                 </a>
               </li>
               <li class="nav-item">
