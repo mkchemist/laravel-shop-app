@@ -77,13 +77,12 @@
               href=""
               data-toggle="modal"
               data-target="#cart-modal"
-              ><span class="px-1"
-                ><i class="fa fa-shopping-cart"></i
-                ><sup class="ml-1 bg-temp-primary cart-counter text-light"
-                  >5</sup
-                ></span
-              ></a
-            >
+              >
+                <span class="px-1">
+                    <i class="fa fa-shopping-cart"></i>
+                    <sup class="ml-1 bg-temp-primary cart-counter text-light">5</sup>
+                </span>
+            </a>
           </li>
           <li class="nav-item mx-1">
             <a class="nav-link landing-effect" href="{{ url("/help") }}"
