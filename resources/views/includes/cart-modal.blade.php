@@ -8,7 +8,10 @@
             <span>&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="my-2 p-3">
+            <input type="text" id="cart_search" placeholder="Search cart" class="form-control">
+        </div>
+        <div class="modal-body" id="cart_output">
           <div class="row mx-auto">
             <div class="col-3 p-2">
               <img class="img-thumbnail" src="{{asset("images/laptop.jpg")}}" alt="" />

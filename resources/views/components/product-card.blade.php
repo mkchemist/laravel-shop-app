@@ -1,4 +1,4 @@
-<div class="card px-0 col-lg-3 col-md-5 my-1 product-card">
+<div class="card px-0 col-lg-3 mx-1 col-md-5 my-1 product-card">
     <a class="product-img-container text-center" href="">
         @if(isset($product))
             @if ($product->thumb_link && file_exists("images/$product->thumb_link"))
@@ -14,13 +14,13 @@
         <p class="lead mb-0">{{ $product->name ?? "Product" }}</p>
         <p class="mb-0 text-muted">{{ $product->brand ?? "unkown" }}</p>
         <p class="lead clearfix">
-      	    <span class="badge bg-temp-primary text-light float-right">{{ $product->price ?? '1000' }} $</span>
+      	    <span class="badge bg-temp-primary text-light float-right">{{ $product->price ?? '1000' }} L.E</span>
         </p>
         <div class="product-cart-actions">
             <a href="{{ url("/product") }}/{{ $product->id ?? "1" }}">
                 <i class="fa fa-eye"></i>
             </a>
-            <a href="">
+            <a href="" data-cart='@json($product)'>
                 <i class="fa fa-cart-plus"></i>
             </a>
             <a href="">

@@ -80,7 +80,7 @@
               >
                 <span class="px-1">
                     <i class="fa fa-shopping-cart"></i>
-                    <sup class="ml-1 bg-temp-primary cart-counter text-light">5</sup>
+                    <sup class="ml-1 bg-temp-primary cart-counter text-light" id="cart-counter">5</sup>
                 </span>
             </a>
           </li>

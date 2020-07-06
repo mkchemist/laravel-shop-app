@@ -26,7 +26,7 @@
         <p class="h2 clearfix mb-0">
             <span class="small text-muted">{{ $product->brand }}</span>
             @if($product->sale)
-            <del class="float-right text-muted">{{ $product->price + ($product->price * $product->sale) }}$</del>
+            <del class="float-right text-muted">{{ $product->price + ($product->price * $product->sale/100) }}$</del>
             @endif
 		</p>
 		<p>
